@@ -1,0 +1,34 @@
+<div class="col-sm-9 col-md-10 col-sm-push-3 col-md-push-2">
+    <!-- <kc-tabs-realm></kc-tabs-realm> -->
+    <h1>Zeige U2F Handles für User</h1>
+    <form class="form-horizontal" name="realmForm" novalidate kc-read-only="!access.manageRealm">
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="user">User</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="user" name="user" data-ng-model="user">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="u2f">U2F Handle</label>
+                <div class="col-md-6">
+                    {{u2f.keyHandle}}
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2" >
+                    <!-- <button kc-save data-ng-show="changed">{{:: 'save' | translate}}</button> -->
+                    <button kc-cancel data-ng-click="searchQuery(user)">Search</button>
+                </div>
+
+                <!-- <div class="col-md-10 col-md-offset-2" data-ng-show="!createRealm && access.manageRealm">
+                    <button kc-save  data-ng-disabled="!changed">{{:: 'save' | translate}}</button>
+                    <button kc-reset data-ng-disabled="!changed">{{:: 'cancel' | translate}}</button>
+                </div> -->
+            </div>
+    </form>
+</div>
+
+<kc-menu></kc-menu>
