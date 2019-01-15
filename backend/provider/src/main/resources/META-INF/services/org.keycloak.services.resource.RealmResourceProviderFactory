@@ -1,1 +1,2 @@
 de.muenchen.keycloak.custom.U2FResourceProviderFactory
+de.muenchen.keycloak.custom.registrationcode.RegistrationcodeResourceProviderFactory

@@ -6,15 +6,15 @@ var module = angular.module('keycloak');
 
 module.config([ '$routeProvider', function($routeProvider) {
     $routeProvider
-        //Roland Start
-        .when('/realms/:realm/u2f', {
+        //Custom Start
+        .when('/realms/:realm/users/:user/u2f', {
             templateUrl : resourceUrl + '/partials/u2f.html',
             resolve : {
                 realm : function(RealmLoader) {
                     return RealmLoader();
                 },
-                serverInfo : function(ServerInfoLoader) {
-                    return ServerInfoLoader();
+                user : function(UserLoader) {
+                    return UserLoader();
                 },
                 u2f: function(U2FLoader) {
                     return U2FLoader();
@@ -22,7 +22,7 @@ module.config([ '$routeProvider', function($routeProvider) {
             },
             controller : 'U2FCtrl'
         })
-        //Roland Ende
+        //Custom Ende
         .otherwise({
             templateUrl : resourceUrl + '/partials/pagenotfound.html'
         });

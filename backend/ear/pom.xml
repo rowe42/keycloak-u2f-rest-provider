@@ -2,23 +2,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>de.muenchen.keycloak.custom</groupId>
         <artifactId>u2f-rest-provider</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    
+    <name>EAR</name>
+    <description/>
+    <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ear</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <packaging>ear</packaging>
 
     <dependencies>
         <dependency>
             <groupId>de.muenchen.keycloak.custom</groupId>
             <artifactId>provider</artifactId>
-            <version>${project.version}</version>
+            <version>1.0-SNAPSHOT</version>
             <type>ejb</type>
         </dependency>
     </dependencies>
@@ -32,6 +34,7 @@
                 <!-- configuring the ear plugin -->
                 <configuration>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <fileNameMapping>no-version</fileNameMapping>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
@@ -51,7 +54,7 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>2.0.0.Final</version>
+                <!--<version>2.0.0.Final</version>-->
                 <configuration>
                     <skip>false</skip>
                 </configuration>

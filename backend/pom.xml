@@ -18,19 +18,6 @@
         <httpclient.version>4.3.6</httpclient.version>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>ear</module>
-                <module>provider</module>
-            </modules>
-        </profile>
-    </profiles>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -54,6 +41,12 @@
                 <version>${keycloak.version}</version>
             </dependency>
             <dependency>
+                <groupId>de.muenchen.keycloak.custom</groupId>
+                <artifactId>u2f-rest-provider</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <type>ejb</type>                
+            </dependency>            
+            <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>jboss-logging</artifactId>
                 <version>${jboss-logging.version}</version>
@@ -71,4 +64,23 @@
         </dependencies>
     </dependencyManagement>
 
+    <modules>
+        <module>ear</module>
+        <module>provider</module>
+    </modules>
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>2.0.0.Final</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

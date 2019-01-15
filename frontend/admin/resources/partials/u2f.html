@@ -1,0 +1,43 @@
+<div class="col-sm-9 col-md-10 col-sm-push-3 col-md-push-2">
+    <ol class="breadcrumb">
+        <li><a href="#/realms/{{realm.realm}}/users">{{:: 'users' | translate}}</a></li>
+        <li>{{user.username}}</li>
+    </ol>
+
+    <kc-tabs-user></kc-tabs-user>
+
+    <h1>{{:: 'u2fdevices' | translate}}</h1>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>{{:: 'credentialid' | translate}}</th>
+            <th>{{:: 'createdDate' | translate}}</th>
+            <th>{{:: 'keyHandle' | translate}}</th>
+            <th>{{:: 'publicKey' | translate}}</th>
+            <th>{{:: 'counter' | translate}}</th>
+            <th>{{:: 'compromised' | translate}}</th>
+            <th data-ng-show="user.access.manage">{{:: 'action' | translate}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="u2fdevice in u2f">
+            <td style="word-break:break-all;word-wrap:break-word">{{u2fdevice.credentialId}}</td>
+            <td>{{u2fdevice.createdDate | date:'medium'}}</td>
+            <td style="word-break:break-all;word-wrap:break-word">{{u2fdevice.deviceRegistration.keyHandle}}</td>
+            <td style="word-break:break-all;word-wrap:break-word">{{u2fdevice.deviceRegistration.publicKey}}</td>
+            <td>{{u2fdevice.deviceRegistration.counter}}</td>
+            <td>{{u2fdevice.deviceRegistration.compromised}}</td>            
+            <td>
+                <button id="remove-u2f" class="btn btn-default" data-ng-click="remove(u2fdevice.credentialId)">
+                    <i class="pficon pficon-delete"></i>
+                </button>
+            </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<kc-menu></kc-menu>
